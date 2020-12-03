@@ -14,7 +14,7 @@ void guessingGame()
 
 	while (!GameOver) 
 	{
-		std::cout << "Is your number " << guess << "?";
+		std::cout << "Is your number " << guess << "?\n";
 		
 		std::cin >> choice;
 		switch (choice)
