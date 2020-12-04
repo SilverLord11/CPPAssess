@@ -1,5 +1,4 @@
 #pragma once
-#include "raylib.h"
 
 class Character
 {
@@ -10,7 +9,7 @@ class Character
 public:
 
 	void character();
-	~character();
+	~Character();
 
 	void update();
 };
