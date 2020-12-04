@@ -16,7 +16,7 @@ void display_board()
 
     //Rander Game Board LAYOUT
 
-    std::cout << "PLAYER - 1 [X]t PLAYER - 2 [O]\n \n";
+    std::cout << "PLAYER - 1 [X]\t PLAYER - 2 [O]\n \n";
     std::cout << "\t\t     |     |     \n";
     std::cout << "\t\t  " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << " \n";
     std::cout << "\t\t_____|_____|_____\n";
