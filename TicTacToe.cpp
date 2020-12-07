@@ -1,8 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
+
 //Array for the board
 char board[3][3] = { {'1','2','3'},{'4','5','6'},{'7','8','9'} };
+
 //Variable Declaration
 int choice;
 int row, column;
@@ -10,7 +12,6 @@ char turn = 'X';
 bool draw = false;
 
 //Function to show the current status of the game board
-
 void displayBoard() 
 {
 
@@ -29,7 +30,6 @@ void displayBoard()
 }
 
 //Function to get the player input and update the board
-
 void playerTurn() 
 {
     if (turn == 'X') 
@@ -41,11 +41,9 @@ void playerTurn()
         std::cout << "\n\tPlayer - 2 [O] turn : ";
     }
     //Taking input from user
-
     cin >> choice;
 
     //switch case to get which row and column will be updated
-
     switch (choice) 
     {
     case 1: 
@@ -110,7 +108,6 @@ void playerTurn()
 }
 
 //Function to get the game status
-
 bool gameOver() 
 {
     //checking the win for Simple Rows and Simple Column
@@ -122,7 +119,6 @@ bool gameOver()
         }
 
         //checking the win for both diagonal
-
         if (board[0][0] == board[1][1] && board[0][0] == board[2][2] || board[0][2] == board[1][1] && board[0][2] == board[2][0])
         {
             return false;
@@ -144,7 +140,6 @@ bool gameOver()
 }
 
 //Program Main Method
-
 int main()
 {
     while (gameOver()) 
