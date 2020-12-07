@@ -9,12 +9,12 @@ int row, column;
 char turn = 'X';
 bool draw = false;
 
-//Function to show the current status of the gaming board
+//Function to show the current status of the game board
 
-void display_board() 
+void displayBoard() 
 {
 
-    //Rander Game Board LAYOUT
+    //Game Board LAYOUT
 
     std::cout << "PLAYER - 1 [X]\t PLAYER - 2 [O]\n \n";
     std::cout << "\t\t     |     |     \n";
@@ -30,7 +30,7 @@ void display_board()
 
 //Function to get the player input and update the board
 
-void player_turn() 
+void playerTurn() 
 {
     if (turn == 'X') 
     {
@@ -41,11 +41,10 @@ void player_turn()
         std::cout << "\n\tPlayer - 2 [O] turn : ";
     }
     //Taking input from user
-    //updating the board according to choice and reassigning the turn Start
 
     cin >> choice;
 
-    //switch case to get which row and column will be update
+    //switch case to get which row and column will be updated
 
     switch (choice) 
     {
@@ -91,31 +90,28 @@ void player_turn()
 
     if (turn == 'X' && board[row][column] != 'X' && board[row][column] != 'O') 
     {
-        //updating the position for 'X' symbol if
-        //it is not already occupied
+        //updating the position for 'X' symbol if it is not already occupied
         board[row][column] = 'X';
         turn = 'O';
     }
     else if (turn == 'O' && board[row][column] != 'X' && board[row][column] != 'O') 
     {
-        //updating the position for 'O' symbol if
-        //it is not already occupied
+        //updating the position for 'O' symbol if it is not already occupied
         board[row][column] = 'O';
         turn = 'X';
     }
     else 
     {
-        //if input position already filled
+        //if input position is already filled
         std::cout << "Box already filled\n Please choose a different one\n\n";
-        player_turn();
+        playerTurn();
     }
-    /* Ends */
-    display_board();
+    displayBoard();
 }
 
-//Function to get the game status e.g. GAME WON, GAME DRAW GAME IN CONTINUE MODE
+//Function to get the game status
 
-bool gameover() 
+bool gameOver() 
 {
     //checking the win for Simple Rows and Simple Column
     for (int i = 0; i < 3; i++)
@@ -143,7 +139,6 @@ bool gameover()
             }
         }
     }
-    //Checking the if game already draw
     draw = true;
     return false;
 }
@@ -152,11 +147,11 @@ bool gameover()
 
 int main()
 {
-    while (gameover()) 
+    while (gameOver()) 
     {
-        display_board();
-        player_turn();
-        gameover();
+        displayBoard();
+        playerTurn();
+        gameOver();
     }
     if (turn == 'X' && draw == false) 
     {
