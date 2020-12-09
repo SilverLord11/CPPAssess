@@ -2,24 +2,17 @@
 #include "Character.h"
 #include <string>
 
-int main() 
-{
-	int attack;
-	int health;
-	std::string name;
-
-	Character::Character();
+	Character::Character()
 	{
-		int attack = 100;
+		int attack = 100; 
 	}
 
-	void update();
+	void update() 
 	{
 
 	}
 
-	~Character();
+	Character::~Character()
 	{
-		delete attack;
+		delete[attack];
 	}
-}
