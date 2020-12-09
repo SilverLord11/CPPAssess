@@ -1,15 +1,25 @@
+#include<iostream>
 #include "Character.h"
+#include <string>
 
-void Character::character() 
+int main() 
 {
+	int attack;
+	int health;
+	std::string name;
 
-}
+	Character::Character();
+	{
+		int attack = 100;
+	}
 
-void Character::update() 
-{
+	void update();
+	{
 
-}
+	}
 
-Character::~Character()
-{
+	~Character();
+	{
+		delete attack;
+	}
 }
