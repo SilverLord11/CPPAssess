@@ -145,6 +145,7 @@
     <ClCompile Include="TicTacToe.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleArena.h" />
     <ClInclude Include="Character.h" />
   </ItemGroup>
   <ItemGroup>

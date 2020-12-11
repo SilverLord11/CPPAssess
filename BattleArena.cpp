@@ -2,20 +2,24 @@
 #include<stdlib.h>
 #include<string>
 #include"Character.h"
+#include"BattleArena.h"
 
-int choice;
+int choice3;
 bool gameOn = true;
+
+
 Character Eliminator(2, 4, false);
 Character Rebel(1, 2, false);
 Character Rebel2(1, 3, false);
 
 void battleArena() 
 {
+	bool battle = true;
 	std::cout << "Welcome to the battle arena.\n";
 	std::cout << "choose your team: 1 for Eliminators or 2 for Rebels.\n";
-	std::cin >> choice;
+	std::cin >> choice3;
 	
-	switch (choice) 
+	switch (choice3) 
 	{
 	case 1:
 		std::cout << "You have chosen: The Eliminators.\n";
@@ -33,7 +37,7 @@ void battleArena()
 	}
 
 	std::cout << "The game will now begin.\n";
-	while (gameOn) 
+	while (battle) 
 	{
 		if (Eliminator.health != 0 && (Rebel.health != 0 || Rebel2.health != 0)) 
 		{
@@ -135,30 +139,32 @@ void battleArena()
 		}
 		else 
 		{
+			battle = false;
 			gameOn = false;
-			GameOver();
 		}
 	}
+	
 }
 
-void GameOver()
+void gameOver()
 {
-	if (Rebel.health == 0 && Rebel2.health == 0) 
+	if (Rebel.health == 0 && Rebel2.health == 0)
 	{
-		if (choice == 2) 
+		gameOn = false;
+		if (choice3 == 2)
 		{
 			std::cout << "As your men reel back and are summarily executed, you realize the banner of absolutism and order will reign on. The battle has been lost, but the war has only begun.\n";
 			std::cout << "Game: Lost.\n";
 		}
-		else 
+		else
 		{
 			std::cout << "as the Terrorists fall to your machine guns, you feel joy as the anarchists are put to rest, once more protecting that which you hold close. Now, onto your next assignment.\n";
 			std::cout << "Game: Won!\n";
 		}
 	}
-	else if (Eliminator.health == 0) 
+	else if (Eliminator.health == 0)
 	{
-		if (choice == 1)
+		if (choice3 == 1)
 		{
 			std::cout << "The Traitors prove too overwhelming, and eventually the Eliminator caves into the fire. The fury in your heart swells as you know this will be a long battle.\n";
 			std::cout << "Game: lost.\n";
@@ -172,3 +178,16 @@ void GameOver()
 	std::cout << "Thanks for playing! I hope you enjoyed.\n";
 	return;
 }
+
+int Main()
+{
+	while (gameOn)
+	{
+		battleArena();
+	}
+	gameOver();
+	return 0;
+}
+
+
+
