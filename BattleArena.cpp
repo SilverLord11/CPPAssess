@@ -39,23 +39,23 @@ void battleArena()
 	std::cout << "The game will now begin.\n";
 	while (battle) 
 	{
-		if (Eliminator.health != 0 && (Rebel.health != 0 || Rebel2.health != 0)) 
+		if (Eliminator.health > 0 && (Rebel.health > 0 || Rebel2.health > 0)) 
 		{
 			if (Eliminator.attked == false)
 			{
-				if (Eliminator.health == 0) 
+				if (Eliminator.health <= 0) 
 				{
 					Eliminator.attked = true;
 					return;
 				}
 				else 
 				{
-					if (Rebel.health == 0)
+					if (Rebel.health <= 0)
 					{
 						Rebel2.health -= Eliminator.attack;
 						Eliminator.attked = true;
 						std::cout << "The eliminator unleashes a volley of bullets! (2 dmg)";
-						if (Rebel2.health == 0) 
+						if (Rebel2.health <= 0) 
 						{
 							std::cout << "The second Rebel is down!\n";
 						}
@@ -70,7 +70,7 @@ void battleArena()
 						Rebel.health -= Eliminator.attack;
 						Eliminator.attked = true;
 						std::cout << "The eliminator unleashes a volley of bullets! (2 dmg)";
-						if (Rebel.health == 0)
+						if (Rebel.health <= 0)
 						{
 							std::cout << "The first Rebel is down!\n";
 						}
@@ -84,7 +84,7 @@ void battleArena()
 			}
 			if (Rebel.attked == false)
 			{
-				if (Rebel.health == 0) 
+				if (Rebel.health <= 0) 
 				{
 					Rebel.attked = true;
 					return;
@@ -94,7 +94,7 @@ void battleArena()
 					Eliminator.health -= Rebel.attack;
 					Rebel.attked = true;
 					std::cout << "The first rebel gets a chink inside the Eliminator's armor! (1 dmg)";
-					if (Eliminator.health == 0)
+					if (Eliminator.health <= 0)
 					{
 						std::cout << "The Eliminator is down!\n";
 					}
@@ -107,7 +107,7 @@ void battleArena()
 			}
 			if (Rebel2.attked == false)
 			{
-				if (Rebel2.health == 0) 
+				if (Rebel2.health <= 0) 
 				{
 					Rebel2.attked = true;
 					return;
@@ -117,7 +117,7 @@ void battleArena()
 					Eliminator.health -= Rebel2.attack;
 					Rebel2.attked = true;
 					std::cout << "The second rebel swipes the Eliminator! (1 dmg)";
-					if (Eliminator.health == 0)
+					if (Eliminator.health <= 0)
 					{
 						std::cout << "The Eliminator is down!\n";
 					}
@@ -148,7 +148,7 @@ void battleArena()
 
 void gameOver()
 {
-	if (Rebel.health == 0 && Rebel2.health == 0)
+	if (Rebel.health <= 0 && Rebel2.health <= 0)
 	{
 		gameOn = false;
 		if (choice3 == 2)
@@ -162,7 +162,7 @@ void gameOver()
 			std::cout << "Game: Won!\n";
 		}
 	}
-	else if (Eliminator.health == 0)
+	else if (Eliminator.health <= 0)
 	{
 		if (choice3 == 1)
 		{

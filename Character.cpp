@@ -11,7 +11,7 @@
 
 	Character::~Character()
 	{
-		if (health == 0) 
+		if (health <= 0) 
 		{
 			std::cout << "the person is defeated!\n";
 		}
