@@ -28,6 +28,7 @@ void battleArena()
 		std::cout << "You now have TWO patriotic workers, one (3 health) slightly more armored than the other (2 health), both carry basic equipment (1 dmg).\n";
 		std::cout << "Your opponent faces you off with ONE of the ruthless Eliminators, a bulky automaton of flesh, " <<
 			"hellbent on snuffing you, and your resistance, out.\n";
+		Eliminator.attked = true;
 		break;
 	}
 
@@ -49,12 +50,30 @@ void battleArena()
 					{
 						Rebel2.health -= Eliminator.attack;
 						Eliminator.attked = true;
+						std::cout << "The eliminator unleashes a volley of bullets! (2 dmg)";
+						if (Rebel2.health == 0) 
+						{
+							std::cout << "The second Rebel is down!\n";
+						}
+						else 
+						{
+							std::cout << "The second rebel is at " << Rebel2.health << "health.\n";
+						}
 						return;
 					}
 					else
 					{
 						Rebel.health -= Eliminator.attack;
 						Eliminator.attked = true;
+						std::cout << "The eliminator unleashes a volley of bullets! (2 dmg)";
+						if (Rebel.health == 0)
+						{
+							std::cout << "The first Rebel is down!\n";
+						}
+						else
+						{
+							std::cout << "The first rebel is at " << Rebel.health << "health.\n";
+						}
 						return;
 					}
 				}
@@ -70,6 +89,15 @@ void battleArena()
 				{
 					Eliminator.health -= Rebel.attack;
 					Rebel.attked = true;
+					std::cout << "The first rebel gets a chink inside the Eliminator's armor! (1 dmg)";
+					if (Eliminator.health == 0)
+					{
+						std::cout << "The Eliminator is down!\n";
+					}
+					else
+					{
+						std::cout << "The Eliminator is at " << Eliminator.health << "health.\n";
+					}
 					return;
 				}
 			}
@@ -84,6 +112,15 @@ void battleArena()
 				{
 					Eliminator.health -= Rebel2.attack;
 					Rebel2.attked = true;
+					std::cout << "The second rebel swipes the Eliminator! (1 dmg)";
+					if (Eliminator.health == 0)
+					{
+						std::cout << "The Eliminator is down!\n";
+					}
+					else
+					{
+						std::cout << "The Eliminator is at " << Eliminator.health << "health.\n";
+					}
 					return;
 				}
 			}
@@ -93,6 +130,7 @@ void battleArena()
 				Rebel.attked = false;
 				Rebel2.attked = false;
 				return;
+				std::cout << "a new round begins.\n";
 			}
 		}
 		else 
@@ -122,11 +160,13 @@ void GameOver()
 	{
 		if (choice == 1)
 		{
-
+			std::cout << "The Traitors prove too overwhelming, and eventually the Eliminator caves into the fire. The fury in your heart swells as you know this will be a long battle.\n";
+			std::cout << "Game: lost.\n";
 		}
 		else
 		{
-
+			std::cout << "Though it was a certainly difficult battle, and casualties have been wrought, you breathe a sigh of relief, as the Eliminators gas mask loses life, you are now on the road to true victory.\n";
+			std::cout << "Game: Won!\n";
 		}
 	}
 	std::cout << "Thanks for playing! I hope you enjoyed.\n";
