@@ -1,18 +1,14 @@
 #pragma once
-#include<string>
 
 class Character
 {
 	public:
 
-	int health = 100;
+	int health;
 	int attack;
-	float speed;
-	std::string name;
+	bool attked;
 
-	Character();
+	Character(int attack, int health, bool attked);
 	~Character();
-
-	void update();
 };
 

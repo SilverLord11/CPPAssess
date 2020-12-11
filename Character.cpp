@@ -2,17 +2,17 @@
 #include "Character.h"
 #include <string>
 
-	Character::Character()
+	Character::Character(int attack, int health, bool attked)
 	{
-		int attack = 100; 
-	}
-
-	void update() 
-	{
-
+		this->attack;
+		this->health;
+		this->attked;
 	}
 
 	Character::~Character()
 	{
-		delete[attack];
+		if (health == 0) 
+		{
+			std::cout << "the person is defeated!\n";
+		}
 	}

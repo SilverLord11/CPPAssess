@@ -1,8 +1,134 @@
 #include<iostream>
 #include<stdlib.h>
+#include<string>
 #include"Character.h"
+
+int choice;
+bool gameOn = true;
+Character Eliminator(2, 4, false);
+Character Rebel(1, 2, false);
+Character Rebel2(1, 3, false);
 
 void battleArena() 
 {
+	std::cout << "Welcome to the battle arena.\n";
+	std::cout << "choose your team: 1 for Eliminators or 2 for Rebels.\n";
+	std::cin >> choice;
+	
+	switch (choice) 
+	{
+	case 1:
+		std::cout << "You have chosen: The Eliminators.\n";
+		std::cout << "You now have ONE of these elite anti-terrorist soldiers, packing heavy weaponry (2 dmg) and resolute health (4 health).\n";
+		std::cout << "Your opponent has TWO terrorists against your stalwart defender, determined to destroy the government you so dearly love.\n";
+		break;
+	
+	case 2:
+		std::cout << "You have chosen: The Rebels.\n";
+		std::cout << "You now have TWO patriotic workers, one (3 health) slightly more armored than the other (2 health), both carry basic equipment (1 dmg).\n";
+		std::cout << "Your opponent faces you off with ONE of the ruthless Eliminators, a bulky automaton of flesh, " <<
+			"hellbent on snuffing you, and your resistance, out.\n";
+		break;
+	}
 
+	std::cout << "The game will now begin.\n";
+	while (gameOn) 
+	{
+		if (Eliminator.health != 0 && (Rebel.health != 0 || Rebel2.health != 0)) 
+		{
+			if (Eliminator.attked == false)
+			{
+				if (Eliminator.health == 0) 
+				{
+					Eliminator.attked = true;
+					return;
+				}
+				else 
+				{
+					if (Rebel.health == 0)
+					{
+						Rebel2.health -= Eliminator.attack;
+						Eliminator.attked = true;
+						return;
+					}
+					else
+					{
+						Rebel.health -= Eliminator.attack;
+						Eliminator.attked = true;
+						return;
+					}
+				}
+			}
+			if (Rebel.attked == false)
+			{
+				if (Rebel.health == 0) 
+				{
+					Rebel.attked = true;
+					return;
+				}
+				else 
+				{
+					Eliminator.health -= Rebel.attack;
+					Rebel.attked = true;
+					return;
+				}
+			}
+			if (Rebel2.attked == false)
+			{
+				if (Rebel2.health == 0) 
+				{
+					Rebel2.attked = true;
+					return;
+				}
+				else
+				{
+					Eliminator.health -= Rebel2.attack;
+					Rebel2.attked = true;
+					return;
+				}
+			}
+			else if (Eliminator.attked == true && Rebel.attked == true && Rebel2.attked == true) 
+			{
+				Eliminator.attked = false;
+				Rebel.attked = false;
+				Rebel2.attked = false;
+				return;
+			}
+		}
+		else 
+		{
+			gameOn = false;
+			GameOver();
+		}
+	}
+}
+
+void GameOver()
+{
+	if (Rebel.health == 0 && Rebel2.health == 0) 
+	{
+		if (choice == 2) 
+		{
+			std::cout << "As your men reel back and are summarily executed, you realize the banner of absolutism and order will reign on. The battle has been lost, but the war has only begun.\n";
+			std::cout << "Game: Lost.\n";
+		}
+		else 
+		{
+			std::cout << "as the Terrorists fall to your machine guns, you feel joy as the anarchists are put to rest, once more protecting that which you hold close. Now, onto your next assignment.\n";
+			std::cout << "Game: Won!\n";
+		}
+	}
+	else if (Eliminator.health == 0) 
+	{
+		if (choice == 1)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+	std::cout << "Thanks for playing! I hope you enjoyed.\n";
+	return;
 }
